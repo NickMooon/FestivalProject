@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Event {
     static Event festival = new Event();
     FestivalInfo rockFestivalInfo = new FestivalInfo();
-    ArrayList<RegistratedUsers> users = new ArrayList<>();
+    ArrayList<RegistratedUsers> users = new ArrayList<RegistratedUsers>();
 
     public static void main(String[] args) {
         try {
