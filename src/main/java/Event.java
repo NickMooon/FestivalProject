@@ -13,7 +13,7 @@ public class Event {
         // Connecting
          final String URL = "jdbc:mysql://localhost:3306/festivaldata?autoReconnect=true&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC";
          final String USER = "root";
-         final String PASSWORD = "5681751_koliana";
+         final String PASSWORD = "IBA_Forever";
         Connection conn = DriverManager.getConnection(URL,USER,PASSWORD);
 
             //Select anf Insert
