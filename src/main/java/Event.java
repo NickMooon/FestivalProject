@@ -48,9 +48,9 @@ public class Event {
 //        catch (FullUserException e){
 //            System.out.println("Регистрация невозможна. Все билеты проданы.");
 //        }
-    }
-    public void registration() throws FullUserException{
-        if (users.size()>rockFestivalInfo.maxUsers)  throw new FullUserException();
-        users.add(new RegistratedUsers());
-    }
+//    }
+//    public void registration() throws FullUserException{
+//        if (users.size()>rockFestivalInfo.maxUsers)  throw new FullUserException();
+//        users.add(new RegistratedUsers());
+   }
 }
