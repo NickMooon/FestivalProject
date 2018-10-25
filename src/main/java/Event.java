@@ -30,10 +30,9 @@ public class Event {
         }
 
         // UPDATE
-        int count = stat.executeUpdate("UPDATE festivaldata.Users SET Nikname = 'Lelik Faggot' WHERE ID>1");
+        int count = stat.executeUpdate("UPDATE festivaldata.Users SET Nikname = 'Lelik' WHERE ID>1");
         System.out.println("Rows affected: " + count);
 
-        // Select after update
         stat.setInt(1, 1);
         stat.setInt(2, 6);
 
