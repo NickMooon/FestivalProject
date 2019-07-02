@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Events</title>
+	 <style>
+         th, td {
+         padding: 5px;
+         }
+		 .form {
+			  position: relative;
+			  z-index: 1;
+			  background: #FFFFFF;
+			  max-width: 500px;
+			  margin: 0 auto 100px;
+			  padding: 45px;
+			  text-align: center;
+			  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+		  }
+		 .form input {
+			 font-family: "Roboto", sans-serif;
+			 outline: 0;
+			 background: #f2f2f2;
+			 width: 100%;
+			 border: 0;
+			 margin: 0 0 15px;
+			 padding: 15px;
+			 box-sizing: border-box;
+			 font-size: 14px;
+		 }
+		 .form table {
+			 font-family: "Roboto", sans-serif;
+			 outline: 0;
+			 background: #f2f2f2;
+			 width: 100%;
+			 border: 0;
+			 margin: 0 0 15px;
+			 padding: 15px;
+			 box-sizing: border-box;
+			 font-size: 14px;
+		 }
+		 .form button {
+			 font-family: "Roboto", sans-serif;
+			 text-transform: uppercase;
+			 outline: 0;
+			 background: #4CAF50;
+			 width: 100%;
+			 border: 0;
+			 padding: 15px;
+			 color: #FFFFFF;
+			 font-size: 14px;
+			 cursor: pointer;
+		 }
+		 .form button:hover,.form button:active,.form button:focus {
+			 background: #43A047;
+		 }
+		 .form .message a {
+			 color: #4CAF50;
+			 text-decoration: none;
+		 }
+     </style>
+</head>
+<body link="#000000" vlink="#000000" bgcolor="black">
+
+	<th:block th:include="/menu"></th:block>
+	<div class="form">
+	<h1>Events list</h1>
+
+	<table border= "9">
+		<tr>
+			<th> ID </th>
+			<th> Name </th>
+			<th> Place </th>
+			<th> Date </th>
+			<th> ALL Places </th>
+		</tr>
+		<tr th:each="event:${events}">
+
+
+
+			<td> <a th:text="${event.id}" th:href="@{/events/{eventid}(eventid = ${event.id})}"> </a> </td>
+
+			<td th:text="${event.name}"
+				th:href="@{/events/{eventid}(eventid = ${event.id})}"></td>
+			<td th:text="${event.place}"></td>
+			<td th:text="${event.date}"></td>
+			<td th:text="${event.all_places - event.users.size()}+'/'+ ${event.all_places}"></td>
+            <div
+                    th:if="${#request.userPrincipal != null and #strings.contains(#request.userPrincipal.authorities,'ADMIN')}">
+                <td>
+                    <a th:href="@{/events/{eventid}/delete(eventid = ${event.id})}"><button style="background: red; padding: 5px">Delete</button></a>
+                </td>
+                <td>
+                    <a th:href="@{/events/{eventid}/edit(eventid = ${event.id})}"><button style="background: red; padding: 5px">Edit</button></a>
+                </td>
+            </div>
+		</tr>
+	</table>
+	<br>
+		<div th:if="${#request.userPrincipal != null and #strings.contains(#request.userPrincipal.authorities,'ROLE_ADMIN')}">
+	<a th:href="@{events/addevent}"><button style="background: red; padding: 5px"> Add Event</button></a>
+		</div>
+	</div>
+
+</body>
+</html>

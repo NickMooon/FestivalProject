@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Page</title>
+    <style>
+        .form {
+            position: relative;
+            z-index: 1;
+            background: #FFFFFF;
+            max-width: 700px;
+            margin: 0 auto 100px;
+            padding: 45px;
+            text-align: center;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        }
+
+        .form input {
+            font-family: "Roboto", sans-serif;
+            outline: 0;
+            background: #f2f2f2;
+            width: 100%;
+            border: 0;
+            margin: 0 0 15px;
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .form button {
+            font-family: "Roboto", sans-serif;
+            text-transform: uppercase;
+            outline: 0;
+            background: #4CAF50;
+            width: 100%;
+            border: 0;
+            padding: 15px;
+            color: #FFFFFF;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .form button:hover, .form button:active, .form button:focus {
+            background: #43A047;
+        }
+
+        .form .message a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+
+    </style>
+</head>
+<body link="#000000" vlink="#000000" bgcolor="black">
+
+<th:block th:include="/menu"></th:block>
+<div class="form">
+    <div th:if="${errorMessage != null}"
+         th:utext="${errorMessage}" class="error">...
+    </div>
+
+    <h1 style="font-size: 2.5em" th:text="${event.name} + ' (' + ${event.date} +')'"></h1>
+    <hr>
+    <h1 style="color:#FF4500;font-size: 2em; font-style: italic">All Performers</h1>
+    <table align="center" class="center">
+        <tr th:each="perf : ${performers}">
+            <td th:text="${perf.name}"></td>
+            <td align="right">
+                <div
+                        th:if="${#request.userPrincipal != null and #strings.contains(#request.userPrincipal.authorities,'ADMIN')}">
+                    <a th:href="@{'/events/' + ${event.id} + '/deleteperf/' + ${perf.performer_id}}"><button style="background: aqua;
+                    text-transform: uppercase;
+                    padding: 5px;">Delete</button>
+                    </a>
+                </div>
+            </td>
+        </tr>
+
+    </table>
+    <p></p>
+    <hr>
+    <div
+            th:if="${#request.userPrincipal != null and #strings.contains(#request.userPrincipal.authorities,'ADMIN')}">
+        <a th:href="@{/events/{eventid}/addperftoevent(eventid = ${event.id})}">
+            <button style="padding: 5px; background: red" >Add performer</button></a>
+    </div>
+
+    <p></p>
+
+    <a th:if="${#request.userPrincipal != null}" th:href="@{/events/{eventid}/signup(eventid = ${event.id})}"><button>I will go</button></a>
+</div>
+
+
+</body>
+</html>

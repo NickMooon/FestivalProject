@@ -1,0 +1,23 @@
+<!--<?xml version='1.0' encoding='utf-8'?>-->
+<!--<!DOCTYPE hibernate-configuration PUBLIC-->
+        <!--"-//Hibernate/Hibernate Configuration DTD//EN"-->
+        <!--"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">-->
+<!--<hibernate-configuration>-->
+    <!--<session-factory>-->
+        <!--<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>-->
+        <!--<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>-->
+        <!--<property name="connection.url">jdbc:mysql://localhost:3306/festivaldata</property>-->
+        <!--<property name="hibernate.connection.username">root</property>-->
+        <!--<property name="hibernate.connection.password">5681751_koliana</property>-->
+        <!--<mapping class="com.example.demo.model.Event"/>-->
+        <!--<mapping class="com.example.demo.model.Users"/>-->
+        <!--<mapping class="com.example.demo.model.Autoris"/>-->
+        <!--<mapping class="com.example.demo.model.Performers"/>-->
+        <!---->
+
+
+
+        <!--&lt;!&ndash; DB schema will be updated if needed &ndash;&gt;-->
+        <!--&lt;!&ndash; <property name="hbm2ddl.auto">update</property> &ndash;&gt;-->
+    <!--</session-factory>-->
+<!--</hibernate-configuration>-->

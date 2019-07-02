@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+   <head>
+      <title th:utext="${title}"></title>
+       <style>
+           .form {
+               position: relative;
+               z-index: 1;
+               background: #FFFFFF;
+               max-width: 360px;
+               margin: 0 auto 100px;
+               padding: 45px;
+               text-align: center;
+               box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+           }
+           .form input {
+               font-family: "Roboto", sans-serif;
+               outline: 0;
+               background: #f2f2f2;
+               width: 100%;
+               border: 0;
+               margin: 0 0 15px;
+               padding: 15px;
+               box-sizing: border-box;
+               font-size: 14px;
+           }
+           .form button {
+               font-family: "Roboto", sans-serif;
+               text-transform: uppercase;
+               outline: 0;
+               background: #4CAF50;
+               width: 100%;
+               border: 0;
+               padding: 15px;
+               color: #FFFFFF;
+               font-size: 14px;
+               cursor: pointer;
+           }
+           .form .message a {
+               color: #4CAF50;
+               text-decoration: none;
+           }
+       </style>
+   </head>
+   
+   <body link="#000000" vlink="#000000" bgcolor="black">
+      <th:block th:include="/menu"></th:block>
+      <div class="form";>
+     	<div th:if="${#request.userPrincipal != null}" th:utext="${userInfo}"></div>  
+      
+     	<ul>
+       		<li th:each="event : ${events}" th:text="${event.name} + ' (' + ${event.date} +')'">Events</li>
+    	</ul>
+		<div th:if="${#request.userPrincipal == null}" > Hello, please <a th:href="@{/login}">login</a> </div>
+    </div>
+       
+   </body>
+</html>
